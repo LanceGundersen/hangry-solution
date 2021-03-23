@@ -11,8 +11,6 @@ import { GetRecipes } from '../stores/recipes/recipes.actions';
 })
 export class RecipeSearchComponent implements OnInit {
 
-
-
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {

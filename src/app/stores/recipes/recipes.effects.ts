@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { RecipePuppyService } from '../../services/recipe-puppy.service'
+import { RecipePuppyService } from '../../services/recipe-puppy.service';
 
 import {
   GetRecipes,
@@ -27,7 +27,7 @@ export class RecipeEffects {
       mergeMap((action) =>
         this.recipeService.searchRecipes(action.term).pipe(
           map((response) => {
-            return new GetRecipesSuccess(response)
+            return new GetRecipesSuccess(response);
           }),
           catchError(error => of(new GetRecipesFailed(error)))
         )

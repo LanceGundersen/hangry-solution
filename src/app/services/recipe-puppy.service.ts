@@ -13,6 +13,6 @@ export class RecipePuppyService {
   constructor(private http: HttpClient) { }
 
   searchRecipes(term: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.baseUrl}?${term.trim()}`)
-  };
+    return this.http.get<Recipe[]>(`${this.baseUrl}?${term.trim()}`);
+  }
 }

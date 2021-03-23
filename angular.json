@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-recipe-site": {
+    "hangry-solution": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-recipe-site",
+            "outputPath": "dist/hangry-solution",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-recipe-site:build"
+            "browserTarget": "hangry-solution:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-recipe-site:build:production"
+              "browserTarget": "hangry-solution:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-recipe-site:build"
+            "browserTarget": "hangry-solution:build"
           }
         },
         "test": {
@@ -111,16 +111,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-recipe-site:serve"
+            "devServerTarget": "hangry-solution:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-recipe-site:serve:production"
+              "devServerTarget": "hangry-solution:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-recipe-site"
+  "defaultProject": "hangry-solution"
 }
