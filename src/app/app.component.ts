@@ -1,5 +1,9 @@
+import { selectSearchResults, selectSearchResultsLoading } from './stores/recipes/recipes.selectors';
 import { Component } from '@angular/core';
-import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { Store } from '@ngrx/store';
+import AppState from './models/app-state.model';
+import { Observable } from 'rxjs';
+import Recipe from './models/recipe.model';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +11,9 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angular-recipe-site';
 
-  recipes = new Array();
+  constructor(private store: Store<AppState>) { };
+
+  recipes$: Observable<Recipe[]> = this.store.select(selectSearchResults);
+  isLoading$: Observable<boolean> = this.store.select(selectSearchResultsLoading);
 }

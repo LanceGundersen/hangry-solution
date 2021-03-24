@@ -3,5 +3,6 @@
   <app-recipe-search></app-recipe-search>
 </div>
 <div class="content">
-  <app-recipe-card *ngFor="let recipe of recipes"></app-recipe-card>
+  <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  <app-recipe-card *ngFor="let recipe of (recipes$ | async)" [name]="recipe.strMeal" [image]="recipe.strMealThumb"></app-recipe-card>
 </div>

@@ -1,17 +1,17 @@
+import { RecipesState } from './recipes.reducer';
 import { createSelector } from '@ngrx/store';
+import AppState from '../../models/app-state.model';
 
-export interface RecipeSearchState {
-  results: [];
-  page: number
-}
+export const searchResults = (state: AppState) => state.searchResults;
 
-export interface AppState {
-  recipeSearchResults: RecipeSearchState;
-}
+export const selectSearchResults = createSelector(
+  searchResults,
+  // TODO: add type
+  (state: RecipesState) => state.searchResults
+);
 
-export const recipeSearchResults = (state: AppState) => state.recipeSearchResults;
-
-export const selectFeatureCount = createSelector(
-  recipeSearchResults,
-  (state: RecipeSearchState) => state.results
+export const selectSearchResultsLoading = createSelector(
+  searchResults,
+  // TODO: add type
+  (state: RecipesState) => state.loading
 );

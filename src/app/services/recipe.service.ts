@@ -6,13 +6,13 @@ import Recipe from '../models/recipe.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipePuppyService {
+export class RecipeService {
 
-  baseUrl = 'http://www.recipepuppy.com/api/';
+  baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 
   constructor(private http: HttpClient) { }
 
   searchRecipes(term: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.baseUrl}?${term.trim()}`);
+    return this.http.get<Recipe[]>(`${this.baseUrl}/filter.php?i=${term.trim()}`);
   }
 }

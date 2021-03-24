@@ -1,6 +1,4 @@
 import { Action } from '@ngrx/store';
-import Recipe from 'src/app/models/recipe.model';
-
 
 export enum RecipesActionTypes {
   GET_RECIPES = 'GET_RECIPES',
@@ -15,6 +13,7 @@ export class GetRecipes implements Action {
 
 export class GetRecipesSuccess implements Action {
   readonly type = RecipesActionTypes.GET_RECIPES_SUCCESS;
+  // TODO: Add type
   constructor(public payload: any) { }
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { RecipePuppyService } from '../../services/recipe-puppy.service';
+import { RecipeService } from '../../services/recipe.service';
 
 import {
   GetRecipes,
@@ -9,7 +9,7 @@ import {
   GetRecipesSuccess,
   GetRecipesFailed,
 } from './recipes.actions';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -17,15 +17,15 @@ export class RecipeEffects {
 
   constructor(
     private actions$: Actions,
-    private recipeService: RecipePuppyService
+    private recipeService: RecipeService
   ) { }
 
 
   getRecipes$ = createEffect(() => {
     return this.actions$.pipe(
       ofType<GetRecipes>(RecipesActionTypes.GET_RECIPES),
-      mergeMap((action) =>
-        this.recipeService.searchRecipes(action.term).pipe(
+      switchMap(({ term }) =>
+        this.recipeService.searchRecipes(term).pipe(
           map((response) => {
             return new GetRecipesSuccess(response);
           }),

@@ -2,13 +2,13 @@ import Recipe from '../../models/recipe.model';
 import { RecipesAction, RecipesActionTypes } from './recipes.actions';
 
 export interface RecipesState {
-  recipes: Recipe[];
+  searchResults: Recipe[];
   loading: boolean;
   error: string | any;
 }
 
 const initialState: RecipesState = {
-  recipes: [],
+  searchResults: [],
   loading: false,
   error: ''
 };
@@ -23,12 +23,13 @@ export function RecipesReducer(state: RecipesState = initialState, action: Recip
     case RecipesActionTypes.GET_RECIPES_SUCCESS:
       return {
         ...state,
-        recipes: action.payload,
+        searchResults: action.payload.meals,
         loading: false
       };
     case RecipesActionTypes.GET_RECIPES_FAILED:
       return {
         ...state,
+        searchResults: [],
         error: action.payload,
         loading: false
       };
