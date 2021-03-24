@@ -20,13 +20,15 @@ import { RecipesReducer } from './stores/recipes/recipes.reducer';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeCardComponent,
-    RecipeSearchComponent
+    RecipeSearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
