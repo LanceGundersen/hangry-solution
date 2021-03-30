@@ -15,19 +15,19 @@ const initialState: SearchState = {
 
 export function SearchRecipesReducer(state: SearchState = initialState, action: RecipesAction): SearchState {
   switch (action.type) {
-    case RecipesActionTypes.GET_RECIPES:
+    case RecipesActionTypes.SEARCH_RECIPES:
       return {
         ...state,
         loading: true
       };
-    case RecipesActionTypes.GET_RECIPES_SUCCESS:
+    case RecipesActionTypes.SEARCH_RECIPES_SUCCESS:
       return {
         ...state,
         meals: action.meals,
         loading: false
 
       };
-    case RecipesActionTypes.GET_RECIPES_FAILED:
+    case RecipesActionTypes.SEARCH_RECIPES_FAILED:
       return {
         ...state,
         meals: [],

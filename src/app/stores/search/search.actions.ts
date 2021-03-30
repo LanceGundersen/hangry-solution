@@ -3,48 +3,48 @@ import Recipe from 'src/app/models/recipe.model';
 import { RecipeList } from '../../models/recipe-list.model';
 
 export enum RecipesActionTypes {
-  GET_RECIPES = '[LANDING PAGE] GET_RECIPES',
-  GET_RECIPES_SUCCESS = '[LANDING PAGE] GET_RECIPES_SUCCESS',
-  GET_RECIPES_FAILED = '[LANDING PAGE] GET_RECIPES_FAILED',
-  GET_RECIPES_BY_ID = '[LANDING PAGE] GET_RECIPES_BY_ID',
-  GET_RECIPES_BY_ID_SUCCESS = '[LANDING PAGE] GET_RECIPES_BY_ID_SUCCESS',
-  GET_RECIPES_BY_ID_FAILED = '[LANDING PAGE] GET_RECIPES_BY_ID_FAILED'
+  SEARCH_RECIPES = '[API SEARCH] SEARCH_RECIPES',
+  SEARCH_RECIPES_SUCCESS = '[API SEARCH] SEARCH_RECIPES_SUCCESS',
+  SEARCH_RECIPES_FAILED = '[API SEARCH] SEARCH_RECIPES_FAILED',
+  SEARCH_RECIPES_BY_ID = '[API SEARCH] SEARCH_RECIPES_BY_ID',
+  SEARCH_RECIPES_BY_ID_SUCCESS = '[API SEARCH] SEARCH_RECIPES_BY_ID_SUCCESS',
+  SEARCH_RECIPES_BY_ID_FAILED = '[API SEARCH] SEARCH_RECIPES_BY_ID_FAILED'
 }
 
-export class GetRecipes implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES;
+export class SearchRecipes implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES;
   constructor(public term: string) { }
 }
 
-export class GetRecipesSuccess implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES_SUCCESS;
+export class SearchRecipesSuccess implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES_SUCCESS;
   constructor(public meals: RecipeList[]) { }
 }
 
-export class GetRecipesFailed implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES_FAILED;
+export class SearchRecipesFailed implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES_FAILED;
   constructor(public payload: string) { }
 }
 
-export class GetRecipesById implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES_BY_ID;
+export class SearchRecipesById implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES_BY_ID;
   constructor(public term: string) { }
 }
 
-export class GetRecipesByIdSuccess implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES_BY_ID_SUCCESS;
+export class SearchRecipesByIdSuccess implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES_BY_ID_SUCCESS;
   constructor(public payload: Recipe) { }
 }
 
-export class GetRecipesByIdFailed implements Action {
-  readonly type = RecipesActionTypes.GET_RECIPES_BY_ID_FAILED;
+export class SearchRecipesByIdFailed implements Action {
+  readonly type = RecipesActionTypes.SEARCH_RECIPES_BY_ID_FAILED;
   constructor(public payload: string) { }
 }
 
 export type RecipesAction =
-  GetRecipes |
-  GetRecipesSuccess |
-  GetRecipesFailed |
-  GetRecipesById |
-  GetRecipesByIdSuccess |
-  GetRecipesByIdFailed;
+  SearchRecipes |
+  SearchRecipesSuccess |
+  SearchRecipesFailed |
+  SearchRecipesById |
+  SearchRecipesByIdSuccess |
+  SearchRecipesByIdFailed;

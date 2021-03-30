@@ -4,10 +4,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { RecipeService } from '../../services/recipe.service';
 
 import {
-  GetRecipes,
+  SearchRecipes,
   RecipesActionTypes,
-  GetRecipesSuccess,
-  GetRecipesFailed,
+  SearchRecipesSuccess,
+  SearchRecipesFailed,
 } from './search.actions';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -22,11 +22,11 @@ export class RecipeEffects {
 
   getRecipes$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType<GetRecipes>(RecipesActionTypes.GET_RECIPES),
+      ofType<SearchRecipes>(RecipesActionTypes.SEARCH_RECIPES),
       switchMap(({ term }) => {
         return this.recipeService.searchRecipes(term).pipe(
-          map((response: any) => new GetRecipesSuccess(response.meals)),
-          catchError(error => of(new GetRecipesFailed(error)))
+          map((response: any) => new SearchRecipesSuccess(response.meals)),
+          catchError(error => of(new SearchRecipesFailed(error)))
         );
       })
     );
