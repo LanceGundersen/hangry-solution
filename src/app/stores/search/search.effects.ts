@@ -8,10 +8,9 @@ import {
   RecipesActionTypes,
   GetRecipesSuccess,
   GetRecipesFailed,
-} from './recipes.actions';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+} from './search.actions';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-
 @Injectable()
 export class RecipeEffects {
 
@@ -24,14 +23,12 @@ export class RecipeEffects {
   getRecipes$ = createEffect(() => {
     return this.actions$.pipe(
       ofType<GetRecipes>(RecipesActionTypes.GET_RECIPES),
-      switchMap(({ term }) =>
-        this.recipeService.searchRecipes(term).pipe(
-          map((response) => {
-            return new GetRecipesSuccess(response);
-          }),
+      switchMap(({ term }) => {
+        return this.recipeService.searchRecipes(term).pipe(
+          map((response: any) => new GetRecipesSuccess(response.meals)),
           catchError(error => of(new GetRecipesFailed(error)))
-        )
-      )
+        );
+      })
     );
   });
 }

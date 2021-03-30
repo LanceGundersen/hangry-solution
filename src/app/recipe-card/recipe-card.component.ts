@@ -1,19 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
   styleUrls: ['./recipe-card.component.sass']
 })
-export class RecipeCardComponent implements OnInit {
+export class RecipeCardComponent {
 
   @Input() name: string;
   @Input() image: string;
-  @Input() summary: string;
+  @Input() id;
 
   constructor() { }
 
-  ngOnInit(): void {
+  selectRecipe(id: string): void {
+    console.log({ id });
   }
 
 }

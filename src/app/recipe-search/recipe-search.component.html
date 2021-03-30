@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill">
   <mat-label>Find a recipe</mat-label>
-  <input matInput (keydown.enter)="search($event.target.value)">
+  <input matInput type="text" (keydown.enter)="search($any($event.target).value)">
   <mat-icon matSuffix>search</mat-icon>
   <mat-hint>Press enter to search.</mat-hint>
 </mat-form-field>

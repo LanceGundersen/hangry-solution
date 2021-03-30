@@ -1,5 +1,4 @@
-import { RecipesState } from './../stores/recipes/recipes.reducer';
-
-export default interface AppState {
-  searchResults: RecipesState;
+import { SearchState } from '../stores/search/search.reducer';
+export interface AppState {
+  searchState: SearchState;
 }

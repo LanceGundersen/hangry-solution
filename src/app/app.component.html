@@ -4,8 +4,14 @@
 </div>
 <div class="content">
   <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
-  <div class="content__cards" *ngIf="!(isLoading$ | async)">
-    <app-recipe-card *ngFor="let recipe of (recipes$ | async)" [name]="recipe.strMeal" [image]="recipe.strMealThumb"></app-recipe-card>
+  <div class="content__cards" *ngIf="(isLoading$ | async) === false">
+    <div *ngFor="let result of searchResults$ | async">
+      <app-recipe-card
+        [name]="result.strMeal"
+        [image]="result.strMealThumb"
+        [id]="result.idMeal">
+      </app-recipe-card>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

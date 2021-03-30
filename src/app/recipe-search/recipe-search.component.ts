@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import AppState from '../models/app-state.model';
-import { GetRecipes } from '../stores/recipes/recipes.actions';
+import { SearchState } from '../stores/search/search.reducer';
+import { GetRecipes } from '../stores/search/search.actions';
 
 @Component({
   selector: 'app-recipe-search',
@@ -10,11 +10,11 @@ import { GetRecipes } from '../stores/recipes/recipes.actions';
 })
 export class RecipeSearchComponent {
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<SearchState>) { }
 
-  search(searchTerm: string) {
-    if (searchTerm.length) {
-      this.store.dispatch(new GetRecipes(searchTerm));
+  search(term: string): void {
+    if (term.length) {
+      this.store.dispatch(new GetRecipes(term));
     }
   }
 

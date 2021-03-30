@@ -1,5 +1,4 @@
-import { searchResults } from './stores/recipes/recipes.selectors';
-import { RecipeEffects } from './stores/recipes/recipes.effects';
+import { RecipeEffects } from './stores/search/search.effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
-import { RecipesReducer } from './stores/recipes/recipes.reducer';
+import { SearchRecipesReducer } from './stores/search/search.reducer';
 
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -41,7 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     StoreModule.forRoot({
-      searchResults: RecipesReducer
+      searchState: SearchRecipesReducer
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([

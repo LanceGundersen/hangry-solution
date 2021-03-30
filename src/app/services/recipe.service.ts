@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import Recipe from '../models/recipe.model';
+import { RecipeList } from '../models/recipe-list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
-  searchRecipes(term: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.baseUrl}/filter.php?i=${term.trim()}`);
+  searchRecipes(term: string): Observable<RecipeList[]> {
+    return this.http.get<RecipeList[]>(`${this.baseUrl}/filter.php?i=${term.trim()}`);
   }
 }

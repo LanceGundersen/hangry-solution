@@ -1,19 +1,19 @@
-import Recipe from '../../models/recipe.model';
-import { RecipesAction, RecipesActionTypes } from './recipes.actions';
+import { RecipesAction, RecipesActionTypes } from './search.actions';
+import { RecipeList } from '../../models/recipe-list.model';
 
-export interface RecipesState {
-  searchResults: Recipe[];
+export interface SearchState {
+  meals: RecipeList[];
   loading: boolean;
   error: string | any;
 }
 
-const initialState: RecipesState = {
-  searchResults: [],
+const initialState: SearchState = {
+  meals: [],
   loading: false,
   error: ''
 };
 
-export function RecipesReducer(state: RecipesState = initialState, action: RecipesAction) {
+export function SearchRecipesReducer(state: SearchState = initialState, action: RecipesAction): SearchState {
   switch (action.type) {
     case RecipesActionTypes.GET_RECIPES:
       return {
@@ -23,15 +23,17 @@ export function RecipesReducer(state: RecipesState = initialState, action: Recip
     case RecipesActionTypes.GET_RECIPES_SUCCESS:
       return {
         ...state,
-        searchResults: action.payload.meals,
+        meals: action.meals,
         loading: false
+
       };
     case RecipesActionTypes.GET_RECIPES_FAILED:
       return {
         ...state,
-        searchResults: [],
+        meals: [],
         error: action.payload,
         loading: false
+
       };
     default:
       return state;
