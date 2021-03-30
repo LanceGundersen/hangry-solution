@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import Recipe from 'src/app/models/recipe.model';
+import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeList } from '../../models/recipe-list.model';
 
 export enum RecipesActionTypes {
@@ -28,7 +28,7 @@ export class SearchRecipesFailed implements Action {
 
 export class SearchRecipesById implements Action {
   readonly type = RecipesActionTypes.SEARCH_RECIPES_BY_ID;
-  constructor(public term: string) { }
+  constructor(public id: string) { }
 }
 
 export class SearchRecipesByIdSuccess implements Action {

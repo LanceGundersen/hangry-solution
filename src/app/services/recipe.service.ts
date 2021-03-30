@@ -1,3 +1,4 @@
+import { Recipe } from 'src/app/models/recipe.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -14,5 +15,9 @@ export class RecipeService {
 
   searchRecipes(term: string): Observable<RecipeList[]> {
     return this.http.get<RecipeList[]>(`${this.baseUrl}/filter.php?i=${term.trim()}`);
+  }
+
+  searchRecipeById(id: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.baseUrl}/lookup.php?i=${id.trim()}`);
   }
 }

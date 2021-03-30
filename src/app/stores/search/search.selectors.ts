@@ -2,14 +2,24 @@ import { createSelector } from '@ngrx/store';
 import { AppState } from '../../models/app-state.model';
 import { SearchState } from './search.reducer';
 
-export const appState = (state: AppState) => state.searchState;
+export const searchState = (state: AppState) => state.searchState;
 
 export const selectSearchResults = createSelector(
-  appState,
-  (state: SearchState) => state.meals
+  searchState,
+  (state: SearchState) => state.search.meals
 );
 
 export const selectSearchResultsLoading = createSelector(
-  appState,
-  (state: SearchState) => state.loading
+  searchState,
+  (state: SearchState) => state.search.loading
+);
+
+export const selectSearchByIdResults = createSelector(
+  searchState,
+  (state: SearchState) => state.selectedMeal.result
+);
+
+export const selectSearchByIdResultsLoading = createSelector(
+  searchState,
+  (state: SearchState) => state.selectedMeal.loading
 );

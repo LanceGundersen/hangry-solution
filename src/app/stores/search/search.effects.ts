@@ -8,6 +8,9 @@ import {
   RecipesActionTypes,
   SearchRecipesSuccess,
   SearchRecipesFailed,
+  SearchRecipesById,
+  SearchRecipesByIdFailed,
+  SearchRecipesByIdSuccess,
 } from './search.actions';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -27,6 +30,18 @@ export class RecipeEffects {
         return this.recipeService.searchRecipes(term).pipe(
           map((response: any) => new SearchRecipesSuccess(response.meals)),
           catchError(error => of(new SearchRecipesFailed(error)))
+        );
+      })
+    );
+  });
+
+  getRecipeById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<SearchRecipesById>(RecipesActionTypes.SEARCH_RECIPES_BY_ID),
+      switchMap(({ id }) => {
+        return this.recipeService.searchRecipeById(id).pipe(
+          map((response: any) => new SearchRecipesByIdSuccess(response.meals)),
+          catchError(error => of(new SearchRecipesByIdFailed(error)))
         );
       })
     );

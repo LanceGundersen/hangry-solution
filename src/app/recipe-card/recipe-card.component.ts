@@ -1,3 +1,6 @@
+import { SearchRecipesById } from './../stores/search/search.actions';
+import { SearchState } from './../stores/search/search.reducer';
+import { Store } from '@ngrx/store';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -11,10 +14,10 @@ export class RecipeCardComponent {
   @Input() image: string;
   @Input() id;
 
-  constructor() { }
+  constructor(private store: Store<SearchState>) { }
 
   selectRecipe(id: string): void {
-    console.log({ id });
+    this.store.dispatch(new SearchRecipesById(id));
   }
 
 }
