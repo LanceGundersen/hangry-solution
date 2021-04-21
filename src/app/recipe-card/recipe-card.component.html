@@ -1,10 +1,11 @@
-<mat-card class="recipe-card" (click)="selectRecipe(id)">
+<mat-card class="recipe-card" (click)="openDialog(id)">
   <mat-card-header>
     <mat-card-title>{{name}}</mat-card-title>
   </mat-card-header>
   <img mat-card-image src="{{image}}" alt="Image of {{name}}">
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button>VIEW</button>
+    <button mat-button disabled>LIKE</button>
+    <button mat-button disabled>SHARE</button>
   </mat-card-actions>
 </mat-card>

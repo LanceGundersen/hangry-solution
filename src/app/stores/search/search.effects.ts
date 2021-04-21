@@ -1,3 +1,4 @@
+import { RecipeDetailsDialogComponent } from './../../recipe-details-dialog/recipe-details-dialog.component';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
@@ -11,15 +12,23 @@ import {
   SearchRecipesById,
   SearchRecipesByIdFailed,
   SearchRecipesByIdSuccess,
+  OpenRecipeDetailsDialog,
+  CloseRecipeDetailsDialog,
 } from './search.actions';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, flatMap, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/models/app-state.model';
+import { selectSearchByIdResults } from './search.selectors';
+import { MatDialog } from '@angular/material/dialog';
 @Injectable()
 export class RecipeEffects {
 
   constructor(
     private actions$: Actions,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private store: Store<AppState>,
+    private dialog: MatDialog,
   ) { }
 
 
@@ -46,4 +55,26 @@ export class RecipeEffects {
       })
     );
   });
+
+
+  openDialog$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<SearchRecipesByIdSuccess>(RecipesActionTypes.SEARCH_RECIPES_BY_ID_SUCCESS),
+      withLatestFrom(this.store.pipe(select(selectSearchByIdResults))),
+      mergeMap(([_, results]) => {
+        console.log({ ...results });
+        const dialogRef = this.dialog.open(RecipeDetailsDialogComponent, {
+          data: { ...results }
+        });
+        return dialogRef.afterClosed();
+      }),
+      map((result: string) => {
+        if (result === undefined) {
+          return new CloseRecipeDetailsDialog();
+        }
+      })
+      ,
+    );
+  },
+    { dispatch: false });
 }

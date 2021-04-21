@@ -6,6 +6,7 @@ export interface SearchState {
   search: {
     meals: RecipeList[];
     loading: boolean;
+    loaded: boolean;
     error: string | any;
   };
   selectedMeal: {
@@ -19,6 +20,7 @@ const initialState: SearchState = {
   search: {
     meals: [],
     loading: false,
+    loaded: false,
     error: '',
   },
   selectedMeal: {
@@ -36,6 +38,7 @@ export function SearchRecipesReducer(state: SearchState = initialState, action: 
         search: {
           meals: [],
           loading: true,
+          loaded: false,
           error: '',
         }
       };
@@ -45,6 +48,7 @@ export function SearchRecipesReducer(state: SearchState = initialState, action: 
         search: {
           meals: action.meals,
           loading: false,
+          loaded: true,
           error: '',
         }
       };
@@ -54,6 +58,7 @@ export function SearchRecipesReducer(state: SearchState = initialState, action: 
         search: {
           meals: [],
           loading: false,
+          loaded: false,
           error: action.payload,
         }
       };

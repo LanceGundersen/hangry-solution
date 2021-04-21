@@ -5,7 +5,7 @@
 <div class="content">
   <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
   <div class="content__cards" *ngIf="(isLoading$ | async) === false">
-    <app-no-results [searchResults$]="searchResults$"></app-no-results>
+    <app-no-results [isLoaded$]="isLoaded$" [searchResults$]="searchResults$"></app-no-results>
     <div *ngFor="let result of searchResults$ | async">
       <app-recipe-card
         [name]="result.strMeal"

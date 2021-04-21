@@ -9,14 +9,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./recipe-card.component.sass']
 })
 export class RecipeCardComponent {
-
   @Input() name: string;
   @Input() image: string;
-  @Input() id;
+  @Input() id: string;
 
   constructor(private store: Store<SearchState>) { }
 
-  selectRecipe(id: string): void {
+  openDialog(id: string): void {
     this.store.dispatch(new SearchRecipesById(id));
   }
 

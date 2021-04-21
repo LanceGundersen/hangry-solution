@@ -14,6 +14,11 @@ export const selectSearchResultsLoading = createSelector(
   (state: SearchState) => state.search.loading
 );
 
+export const selectSearchResultsLoaded = createSelector(
+  searchState,
+  (state: SearchState) => state.search.loaded
+);
+
 export const selectSearchByIdResults = createSelector(
   searchState,
   (state: SearchState) => state.selectedMeal.result

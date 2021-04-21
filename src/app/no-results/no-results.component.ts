@@ -9,4 +9,5 @@ import { RecipeList } from '../models/recipe-list.model';
 })
 export class NoResultsComponent {
   @Input() searchResults$: Observable<RecipeList[]>;
+  @Input() isLoaded$: Observable<boolean>;
 }

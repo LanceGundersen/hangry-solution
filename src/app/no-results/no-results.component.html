@@ -1,3 +1,3 @@
-<mat-card *ngIf="!(searchResults$ | async)">
+<mat-card *ngIf="(isLoaded$ | async) && !(searchResults$ | async)">
   Sorry, no results found. Please try another search term.
 </mat-card>

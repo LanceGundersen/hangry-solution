@@ -8,7 +8,9 @@ export enum RecipesActionTypes {
   SEARCH_RECIPES_FAILED = '[API SEARCH] SEARCH_RECIPES_FAILED',
   SEARCH_RECIPES_BY_ID = '[API SEARCH] SEARCH_RECIPES_BY_ID',
   SEARCH_RECIPES_BY_ID_SUCCESS = '[API SEARCH] SEARCH_RECIPES_BY_ID_SUCCESS',
-  SEARCH_RECIPES_BY_ID_FAILED = '[API SEARCH] SEARCH_RECIPES_BY_ID_FAILED'
+  SEARCH_RECIPES_BY_ID_FAILED = '[API SEARCH] SEARCH_RECIPES_BY_ID_FAILED',
+  OPEN_RECIPE_DETAILS_DIALOG = '[DIALOG] OPEN_RECIPE_DETAILS_DIALOG',
+  CLOSE_RECIPE_DETAILS_DIALOG = '[DIALOG] CLOSE_RECIPE_DETAILS_DIALOG'
 }
 
 export class SearchRecipes implements Action {
@@ -41,10 +43,20 @@ export class SearchRecipesByIdFailed implements Action {
   constructor(public payload: string) { }
 }
 
+export class OpenRecipeDetailsDialog implements Action {
+  readonly type = RecipesActionTypes.OPEN_RECIPE_DETAILS_DIALOG;
+}
+
+export class CloseRecipeDetailsDialog implements Action {
+  readonly type = RecipesActionTypes.CLOSE_RECIPE_DETAILS_DIALOG;
+}
+
 export type RecipesAction =
   SearchRecipes |
   SearchRecipesSuccess |
   SearchRecipesFailed |
   SearchRecipesById |
   SearchRecipesByIdSuccess |
-  SearchRecipesByIdFailed;
+  SearchRecipesByIdFailed |
+  OpenRecipeDetailsDialog |
+  CloseRecipeDetailsDialog;

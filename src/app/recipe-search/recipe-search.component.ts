@@ -14,10 +14,10 @@ export class RecipeSearchComponent {
   constructor(private store: Store<SearchState>) { }
 
   updateSearchTerm(value: string): void {
-    if (value) this.searchTerm = value.trim();
+    if (value) { this.searchTerm = value.trim(); }
   }
 
   search(): void {
-    if (this.searchTerm.length) this.store.dispatch(new SearchRecipes(this.searchTerm));
+    if (this.searchTerm.length) { this.store.dispatch(new SearchRecipes(this.searchTerm)); }
   }
 }

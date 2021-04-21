@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
@@ -21,6 +22,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { FooterComponent } from './footer/footer.component';
 import { NoResultsComponent } from './no-results/no-results.component';
+import { RecipeDetailsDialogComponent } from './recipe-details-dialog/recipe-details-dialog.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { NoResultsComponent } from './no-results/no-results.component';
     RecipeCardComponent,
     RecipeSearchComponent,
     FooterComponent,
-    NoResultsComponent
+    NoResultsComponent,
+    RecipeDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { NoResultsComponent } from './no-results/no-results.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     StoreModule.forRoot({
       searchState: SearchRecipesReducer
@@ -50,6 +54,7 @@ import { NoResultsComponent } from './no-results/no-results.component';
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RecipeDetailsDialogComponent]
 })
 export class AppModule { }
