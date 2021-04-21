@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { FooterComponent } from './footer/footer.component';
+import { NoResultsComponent } from './no-results/no-results.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     RecipeCardComponent,
     RecipeSearchComponent,
-    FooterComponent
+    FooterComponent,
+    NoResultsComponent
   ],
   imports: [
     BrowserModule,

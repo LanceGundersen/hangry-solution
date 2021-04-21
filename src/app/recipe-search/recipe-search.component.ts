@@ -9,13 +9,15 @@ import { SearchRecipes } from '../stores/search/search.actions';
   styleUrls: ['./recipe-search.component.sass']
 })
 export class RecipeSearchComponent {
+  searchTerm = '';
 
   constructor(private store: Store<SearchState>) { }
 
-  search(term: string): void {
-    if (term.length) {
-      this.store.dispatch(new SearchRecipes(term));
-    }
+  updateSearchTerm(value: string): void {
+    if (value) this.searchTerm = value.trim();
   }
 
+  search(): void {
+    if (this.searchTerm.length) this.store.dispatch(new SearchRecipes(this.searchTerm));
+  }
 }

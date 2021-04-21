@@ -1,6 +1,11 @@
 <mat-form-field appearance="fill">
   <mat-label>Find a recipe</mat-label>
-  <input matInput type="text" (keydown.enter)="search($any($event.target).value)">
-  <mat-icon matSuffix>search</mat-icon>
+  <input
+    matInput
+    type="text"
+    [value]="searchTerm"
+    (input)="updateSearchTerm($any($event.target).value)"
+    (keydown.enter)="search()">
+    <mat-icon matSuffix (click)="search()" [ngClass]="{'mat-icon--disable': !searchTerm.length}">search</mat-icon>
   <mat-hint>Press enter to search.</mat-hint>
 </mat-form-field>
