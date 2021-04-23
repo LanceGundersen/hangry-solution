@@ -1,6 +1,19 @@
 # AngularRecipeSite
 
+A project for fun. _NOTE: Database read/writing and user authentication hasn't been setup yet._
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+Leverages Google Firebase hosting and [TheMealDB](https://www.themealdb.com/api.php) for the API of recipes.
+Auto deploy via GitHub actions
+
+## Quickstart
+
+The quickstart instructions assume you have Git and Node installed!
+
+1. Download the via Git, Github CLI or via zip file. [repository](https://github.com/LanceGundersen/hangry-solution)
+2. Navigate to the downloaded repository in your favorite terminal `/hangry-solution`.
+3. Run `npm install` in the `/hangry-solution` directory.
+4. See running a development server below.
 
 ## Development server
 
