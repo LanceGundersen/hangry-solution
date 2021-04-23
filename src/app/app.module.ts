@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FooterComponent } from './footer/footer.component';
 import { NoResultsComponent } from './no-results/no-results.component';
 import { RecipeDetailsDialogComponent } from './recipe-details-dialog/recipe-details-dialog.component';
+import { ChefAnimationComponent } from './chef-animation/chef-animation.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RecipeDetailsDialogComponent } from './recipe-details-dialog/recipe-det
     RecipeSearchComponent,
     FooterComponent,
     NoResultsComponent,
-    RecipeDetailsDialogComponent
+    RecipeDetailsDialogComponent,
+    ChefAnimationComponent
   ],
   imports: [
     BrowserModule,
