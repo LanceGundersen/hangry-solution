@@ -1,10 +1,16 @@
+@import '~sass-mq'
+
 .mat-form-field
-  width: 50vw
-  .mat-form-field
-    width: 100%
+  width: 75vw
+  input
+    color: white
+    background-color: none !important
   .mat-icon
     &:hover
       cursor: pointer
+
+  @include mq($from: tablet)
+    width: 50vw
 
   .mat-icon--disable
     color: grey

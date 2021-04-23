@@ -1,12 +1,21 @@
-<h2 mat-dialog-title>{{data.strMeal}}</h2>
+<button mat-icon-button class="close-button" color="accent" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+
+<h2 mat-dialog-title cdkFocusRegionstart>{{data.strMeal}}</h2>
 
 <mat-dialog-content>
   <p>{{data.strArea}} Dish</p>
   <p>{{data.strInstructions}}</p>
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button mat-raised-button (click)="close()">Close</button>
-  <button mat-raised-button color="accent" (click)="goToLink(data.strYoutube)" *ngIf="data.strYoutube">YouTube Source</button>
-  <button mat-raised-button color="primary" (click)="goToLink(data.strSource)" *ngIf="data.strSource">Recipe Source</button>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent" (click)="goToLink(data.strYoutube)" *ngIf="data.strYoutube">
+    YouTube
+    <mat-icon class="launch-icon">launch</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="goToLink(data.strSource)" *ngIf="data.strSource">
+    Recipe
+    <mat-icon class="launch-icon">launch</mat-icon>
+  </button>
 </mat-dialog-actions>

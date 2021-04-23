@@ -6,6 +6,6 @@
     [value]="searchTerm"
     (input)="updateSearchTerm($any($event.target).value)"
     (keydown.enter)="search()">
-    <mat-icon matSuffix (click)="search()" [ngClass]="{'mat-icon--disable': !searchTerm.length}">search</mat-icon>
+    <mat-icon matSuffix cdkFocusRegionstart (click)="search()" [ngClass]="{'mat-icon--disable': !searchTerm.length}">search</mat-icon>
   <mat-hint>Press enter to search.</mat-hint>
 </mat-form-field>

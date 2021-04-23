@@ -1,5 +1,11 @@
+@import '~sass-mq'
+
 html, body
   height: 100%
 
 body
   margin: 0
+
+.details-dialog .mat-dialog-container
+  @include mq($from: desktop)
+    max-width: 50vw !important

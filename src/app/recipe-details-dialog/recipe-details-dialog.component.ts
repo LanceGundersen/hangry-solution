@@ -14,10 +14,6 @@ export class RecipeDetailsDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Recipe
   ) { }
 
-  close(): void {
-    this.dialogRef.close();
-  }
-
   goToLink(url: string): void {
     window.open(url, '_blank');
   }

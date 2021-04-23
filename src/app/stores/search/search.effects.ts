@@ -62,8 +62,8 @@ export class RecipeEffects {
       ofType<SearchRecipesByIdSuccess>(RecipesActionTypes.SEARCH_RECIPES_BY_ID_SUCCESS),
       withLatestFrom(this.store.pipe(select(selectSearchByIdResults))),
       mergeMap(([_, results]) => {
-        console.log({ ...results });
         const dialogRef = this.dialog.open(RecipeDetailsDialogComponent, {
+          panelClass: 'details-dialog',
           data: { ...results }
         });
         return dialogRef.afterClosed();
